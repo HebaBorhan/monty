@@ -37,7 +37,7 @@ exit(EXIT_FAILURE);
 while (fgets(line_buff, sizeof(line_buff), my_file) != NULL)
 {
 line_number++;
-read_line(line_buff, line_number, &stack_head);
+read_line(line_buff, line_number, stack_head);
 }
 
 fclose(my_file);
