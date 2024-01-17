@@ -12,12 +12,12 @@
 
 void read_line(char *line, unsigned int line_number, stack_t **stack_head)
 {
-    char *opcode = strtok(line, " \t\n");
+char *opcode = strtok(line, " \t\n");
 
-    if (opcode == NULL || opcode[0] == '#')
-    {
-        return;
-    }
+if (opcode == NULL || opcode[0] == '#')
+{
+return;
+}
 
-    execute_opcode(opcode, line_number, stack_head);
+exec_opcode(opcode, line_number, stack_head);
 }

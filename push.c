@@ -11,36 +11,36 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-    char *str;
-    int num;
-    
-    stack_t *new_node = malloc(sizeof(stack_t));
+char *str;
+int num;
 
-    str = strtok(NULL, " \t\n");
+stack_t *new_node = malloc(sizeof(stack_t));
 
-    if (!str)
-    {
-        fprintf(stderr, "L%u: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
+str = strtok(NULL, " \t\n");
 
-    num = atoi(str);
+if (!str)
+{
+fprintf(stderr, "L%u: usage: push integer\n", line_number);
+exit(EXIT_FAILURE);
+}
 
-    if (!new_node)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
+num = atoi(str);
 
-    new_node->n = num;
+if (!new_node)
+{
+fprintf(stderr, "Error: malloc failed\n");
+exit(EXIT_FAILURE);
+}
 
-    new_node->prev = NULL;
-    new_node->next = *stack;
+new_node->n = num;
 
-    if (*stack)
-    {
-        (*stack)->prev = new_node;
-    }
+new_node->prev = NULL;
+new_node->next = *stack;
 
-    *stack = new_node;
+if (*stack)
+{
+(*stack)->prev = new_node;
+}
+
+*stack = new_node;
 }
