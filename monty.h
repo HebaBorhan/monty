@@ -22,6 +22,7 @@ struct stack_s *prev;
 struct stack_s *next;
 } stack_t;
 
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -32,13 +33,14 @@ struct stack_s *next;
  */
 typedef struct instruction_s
 {
-    char *opcode;
-    void (*f)(stack_t **stack, unsigned int line);
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line);
 } instruction_t;
 
-void push(stack_t **stack, unsigned int line_number);
+
 void read_line(char *line, unsigned int line_number, stack_t **stack_head);
 void exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head);
+void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 
 #endif

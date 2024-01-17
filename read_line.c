@@ -19,5 +19,5 @@ if (opcode == NULL || opcode[0] == '#')
 return;
 }
 
-exec_opcode(opcode, line_number, *stack_head);
+exec_opcode(opcode, line_number, stack_head);
 }
