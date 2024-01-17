@@ -39,5 +39,6 @@ void (*f)(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void read_line(char *line, unsigned int line_number, stack_t **stack_head);
 void exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif

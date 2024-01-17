@@ -14,6 +14,7 @@ void exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 int i = 0;
 instruction_t inst[] = {
 {"push", push},
+{"pall", pall},
 {NULL, NULL}
 };
 
