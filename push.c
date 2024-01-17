@@ -17,14 +17,15 @@ int num;
 stack_t *new_node = malloc(sizeof(stack_t));
 
 str = strtok(NULL, " \t\n");
+num = atoi(str);
 
-if (!str)
+if (!num)
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
 
-num = atoi(str);
+
 
 if (!new_node)
 {
