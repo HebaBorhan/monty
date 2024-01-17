@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stddef.h>
+#include <sys/types.h>
+#include <stdio.h>
 
 /**
  * main - entry point
@@ -10,6 +13,11 @@
 int main(int argc, char **argv)
 {
     FILE *my_file;
+    char *line_buff = NULL;
+    size_t len = 0;
+    ssize_t read;
+    unsigned int line_number = 0;
+    stack_t *stack_head = NULL;
 
     if (argc != 2)
     {
@@ -23,6 +31,13 @@ int main(int argc, char **argv)
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }
+
+    while (getline(&line_buff, &len, my_file) != -1)
+    {
+        line_number++;
+        read_line(line_buff, line_number, &stack_head);
+    }
+
     fclose(my_file);
     return (EXIT_SUCCESS);
 }
