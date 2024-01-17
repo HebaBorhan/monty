@@ -11,14 +11,46 @@
  */
 void execute_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 {
-    int opcode_index = get_opcode(opcode);
-    instruction_t *instruction = &inst[opcode_index];
-
-    if (opcode_index == -1)
+    /**
+     int opcode_index = get_opcode(opcode);
+     */
+    
+    int i = 0;
+    instruction_t inst[] = {
+        {"push", push},
+        /**
+        {"pall", pall},
+        {"pint", pint},
+        {"pop", pop},
+        {"swap", swap},
+        {"add", add},
+        {"nop", nop},
+        {"sub", sub},
+        {"div", _div},
+        {"mul", mul},
+        {"mod", mod},
+        {"pchar", pchar},
+        {"rotl", rotl},
+        {"rotr", rotr},
+        */
+        {NULL, NULL}};
+    
+    /**
+     if (opcode_index == -1)
     {
         fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
         exit(EXIT_FAILURE);
     }
+    */
 
-    instruction->f(stack_head, line_number);
+    for (i = 0; inst[i].opcode != NULL; i++)
+    {
+        if (strcmp(inst[i].opcode, opcode) == 0)
+        {
+            inst[i].f(stack_head, line_number);
+            return;
+        }
+    }
+    fprintf(stderr, "Error: Opcode not found in inst array\n");
+    exit(EXIT_FAILURE);
 }

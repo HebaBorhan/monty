@@ -54,9 +54,9 @@ void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 */
 
-extern instruction_t inst[];
-
-int get_opcode(char *opcode);
+/**
+ int get_opcode(char *opcode);
+ */
 
 void read_line(char *line, unsigned int line_number, stack_t **stack_head);
 
