@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void get_opcode(char *opcode)
+int get_opcode(char *opcode)
 {
     int i = 0;
     instruction_t inst[] = {
