@@ -11,7 +11,7 @@
  */
 void exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 {
-int i = 0;
+int i;
 instruction_t inst[] = {
 {"push", push},
 {"pall", pall},
@@ -26,6 +26,6 @@ inst[i].f(stack_head, line_number);
 return;
 }
 }
-fprintf(stderr, "Error: Opcode not found in inst array\n");
+fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
 }
