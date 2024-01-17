@@ -19,7 +19,7 @@ int main(int argc, char **argv)
 FILE *my_file;
 char line_buff[MAX_LINE_LENGTH];
 unsigned int line_number = 0;
-stack_t *stack_head = NULL;
+stack_t **stack_head = NULL;
 
 if (argc != 2)
 {
@@ -37,7 +37,7 @@ exit(EXIT_FAILURE);
 while (fgets(line_buff, sizeof(line_buff), my_file) != NULL)
 {
 line_number++;
-read_line(line_buff, line_number, *stack_head);
+read_line(line_buff, line_number, stack_head);
 }
 
 fclose(my_file);
