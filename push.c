@@ -21,13 +21,13 @@ free(new_node);
 exit(EXIT_FAILURE);
 }
 str = strtok(NULL, " \t\n");
-num = atoi(str);
 if (!str)
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 free(new_node);
 exit(EXIT_FAILURE);
 }
+num = atoi(str);
 new_node->n = num;
 new_node->prev = NULL;
 new_node->next = *stack;
