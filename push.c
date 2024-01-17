@@ -22,7 +22,7 @@ exit(EXIT_FAILURE);
 }
 str = strtok(NULL, " \t\n");
 num = atoi(str);
-if (!num)
+if (!str)
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 free(new_node);
