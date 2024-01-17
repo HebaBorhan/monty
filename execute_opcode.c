@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * execute_opcode - Execute instruction based on opcode
@@ -6,9 +9,10 @@
  * @line_number: Line number in Monty file
  * @stack_head: Pointer to head of stack
  */
-void execute_opcode(opcode, line_number, stack_head)
+void execute_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 {
     int opcode_index = get_opcode(opcode);
+    instruction_t *instruction = &inst[opcode_index];
 
     if (opcode_index == -1)
     {
@@ -16,6 +20,5 @@ void execute_opcode(opcode, line_number, stack_head)
         exit(EXIT_FAILURE);
     }
 
-    instruction_t *instruction = &inst[opcode_index];
     instruction->f(stack_head, line_number);
 }

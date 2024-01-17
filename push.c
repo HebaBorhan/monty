@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * push - insert element onto the stack
@@ -10,6 +13,8 @@ void push(stack_t **stack, unsigned int line_number)
 {
     char *str;
     int num;
+    
+    stack_t *new_node = malloc(sizeof(stack_t));
 
     str = strtok(NULL, " \t\n");
 
@@ -20,8 +25,6 @@ void push(stack_t **stack, unsigned int line_number)
     }
 
     num = atoi(str);
-
-    stack_t *new_node = malloc(sizeof(stack_t));
 
     if (!new_node)
     {

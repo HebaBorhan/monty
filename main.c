@@ -1,7 +1,11 @@
+#include <stdio.h>
 #include "monty.h"
 #include <stddef.h>
 #include <sys/types.h>
-#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LINE_LENGTH 1024
 
 /**
  * main - entry point
@@ -13,15 +17,13 @@
 int main(int argc, char **argv)
 {
     FILE *my_file;
-    char *line_buff = NULL;
-    size_t len = 0;
-    ssize_t read;
+    char line_buff[MAX_LINE_LENGTH];
     unsigned int line_number = 0;
     stack_t *stack_head = NULL;
 
     if (argc != 2)
     {
-        dprintf(stderr, "USAGE: monty file\n");
+        fprintf(stderr, "USAGE: monty file\n");
         exit(EXIT_FAILURE);
     }
 
@@ -32,7 +34,7 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
-    while (getline(&line_buff, &len, my_file) != -1)
+    while (fgets(line_buff, sizeof(line_buff), my_file) != NULL)
     {
         line_number++;
         read_line(line_buff, line_number, &stack_head);
