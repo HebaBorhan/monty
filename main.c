@@ -23,5 +23,6 @@ int main(int argc, char **argv)
         fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
         exit(EXIT_FAILURE);
     }
-    return (0);
+    fclose(my_file);
+    return (EXIT_SUCCESS);
 }
