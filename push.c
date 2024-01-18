@@ -15,11 +15,12 @@ void push(stack_t **stack, unsigned int line_number)
 char *str;
 long int num;
 int i;
-stack_t *new_node, *temp;
+stack_t *new_node;
 str = strtok(NULL, " \t\n");
 if (str == NULL)
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 for (i = 0; str[i] != '\0'; i++)
@@ -27,6 +28,7 @@ for (i = 0; str[i] != '\0'; i++)
 if (!isdigit(str[i]) && !(i == 0 && str[i] == '-'))
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 }
@@ -36,18 +38,13 @@ if (!new_node)
 {
 fprintf(stderr, "Error: malloc failed\n");
 free(new_node);
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 new_node->n = num;
 new_node->prev = NULL;
-temp = *stack;
-if (temp != NULL)
-{
-while (temp->prev != NULL)
-temp = temp->prev;
-}
-new_node->next = temp;
-if (temp)
-temp->prev = new_node;
+new_node->next = *stack;
+if (*stack)
+(*stack)->prev = new_node;
 *stack = new_node;
 }
