@@ -15,7 +15,7 @@ void push(stack_t **stack, unsigned int line_number)
 char *str;
 long int num;
 int i;
-stack_t *new_node;
+stack_t *new_node, *temp;
 str = strtok(NULL, " \t\n");
 if (str == NULL)
 {
@@ -40,8 +40,14 @@ exit(EXIT_FAILURE);
 }
 new_node->n = num;
 new_node->prev = NULL;
-new_node->next = *stack;
-if (*stack)
-(*stack)->prev = new_node;
+temp = *stack;
+if (temp != NULL)
+{
+while (temp->prev != NULL)
+temp = temp->prev;
+}
+new_node->next = temp;
+if (temp)
+temp->prev = new_node;
 *stack = new_node;
 }
