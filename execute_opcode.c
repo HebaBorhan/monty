@@ -32,4 +32,5 @@ if (opcode && inst[i].opcode == NULL)
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
 }
+return (0);
 }
