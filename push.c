@@ -22,7 +22,7 @@ if (str == NULL)
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-for (i = 0; str[i] != NULL; i++)
+for (i = 0; str[i] != '\0'; i++)
 {
 if (!isdigit(str[i]) && !(i == 0 && str[i] == '-'))
 {
