@@ -14,7 +14,9 @@ fprintf(stderr, "L%u: can't pop, stack empty\n", line_number);
 free_stack(*stack);
 exit(EXIT_FAILURE);
 }
+
 *stack = current->next;
-(*stack)->prev = NULL;
+if (*stack != NULL)
+(*stack)->prev = current->prev;
 free(current);
 }
