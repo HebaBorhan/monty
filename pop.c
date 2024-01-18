@@ -11,6 +11,7 @@ stack_t *current = *stack;
 if (*stack == NULL)
 {
 fprintf(stderr, "L%u: can't pop, stack empty\n", line_number);
+free_stack(*stack);
 exit(EXIT_FAILURE);
 }
 if (current != NULL)
