@@ -14,7 +14,8 @@ return;
 while (current != NULL)
 {
 printf("%d\n", current->n);
+if (current->next == NULL)
+return;
 current = current->next;
 }
-return;
 }
