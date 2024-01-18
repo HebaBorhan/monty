@@ -42,7 +42,7 @@ r = read_line(line_buff, line_number, &stack_head);
 if (r == 1)
 line_number--;
 }
-
+free_stack(stack_head);
 fclose(my_file);
 return (EXIT_SUCCESS);
 }
