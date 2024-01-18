@@ -17,7 +17,7 @@ if (strspn(line, " \t\n") == strlen(line))
 {
 return;
 }
-*opcode = strtok(line, " \t\n");
+opcode = strtok(line, " \t\n");
 
 if (opcode == NULL || opcode[0] == '#')
 {
