@@ -14,21 +14,30 @@ void push(stack_t **stack, unsigned int line_number)
 {
 char *str;
 int num;
-stack_t *new_node = malloc(sizeof(stack_t));
+stack_t *new_node;
+
+str = strtok(NULL, " \t\n");
+if (str == NULL)
+{
+fprintf(stderr, "L%u: usage: push integer\n", line_number);
+exit(EXIT_FAILURE);
+}
+for (int i = 0; str[i] != '\0'; i++)
+{
+if (!isdigit(str[i]) && !(i == 0 && str[i] == '-'))
+{
+fprintf(stderr, "L%u: usage: push integer\n", line_number);
+exit(EXIT_FAILURE);
+}
+}
+num = atoi(str);
+new_node = malloc(sizeof(stack_t));
 if (!new_node)
 {
 fprintf(stderr, "Error: malloc failed\n");
 free(new_node);
 exit(EXIT_FAILURE);
 }
-str = strtok(NULL, " \t\n");
-if (!isdigit(str) || str == NULL)
-{
-fprintf(stderr, "L%u: usage: push integer\n", line_number);
-free(new_node);
-exit(EXIT_FAILURE);
-}
-num = atoi(str);
 new_node->n = num;
 new_node->prev = NULL;
 new_node->next = *stack;
