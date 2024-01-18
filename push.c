@@ -22,7 +22,7 @@ free(new_node);
 exit(EXIT_FAILURE);
 }
 str = strtok(NULL, " \t\n");
-if (!isdigit(*str))
+if (!isdigit(str) || str == NULL)
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 free(new_node);
