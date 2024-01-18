@@ -20,6 +20,12 @@ current = current->prev;
 }
 *stack = (*stack)->next;
 if (*stack != NULL)
-(*stack)->prev = NULL;
+(*stack)->prev = current->prev;
+else
+{
+current->prev->next = current->next;
+if (current->next != NULL)
+current->next->prev = current->prev;
+}
 free(current);
 }
