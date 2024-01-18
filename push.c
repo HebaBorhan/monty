@@ -14,10 +14,10 @@ void push(stack_t **stack, unsigned int line_number)
 {
 char *str;
 long int num;
-int i;
+//int i;
 stack_t *new_node;
 str = strtok(NULL, " \t\n");
-if (str == NULL || !isdigit(*str) && *str != '-' && *str != '+')
+if (str == NULL || (!isdigit(*str) && *str != '-' && *str != '+'))
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 free_stack(*stack);
