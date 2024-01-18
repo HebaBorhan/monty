@@ -14,7 +14,7 @@ int exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 {
 int i;
 instruction_t inst[] = {{"push", push}, {"pall", pall}, {"pint", pint},
-{"pop", pop}, {"swap", swap}, {NULL, NULL}};
+{"pop", pop}, {"swap", swap}, {"nop", nop}, {NULL, NULL}};
 
 for (i = 0; inst[i].opcode && opcode; i++)
 {
