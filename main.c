@@ -20,6 +20,7 @@ FILE *my_file;
 char line_buff[MAX_LINE_LENGTH];
 unsigned int line_number = 0;
 stack_t *stack_head = NULL;
+int r;
 
 if (argc != 2)
 {
@@ -37,7 +38,10 @@ exit(EXIT_FAILURE);
 while (fgets(line_buff, sizeof(line_buff), my_file) != NULL)
 {
 line_number++;
-read_line(line_buff, line_number, &stack_head);
+r = read_line(line_buff, line_number, &stack_head);
+free(line_buff);
+if (r == -1)
+line_number--;
 }
 
 fclose(my_file);
