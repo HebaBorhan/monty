@@ -15,8 +15,14 @@ exit(EXIT_FAILURE);
 }
 else
 {
+if ((*stack)->next == NULL)
+free(*stack);
+else
+{
 *stack = (*stack)->next;
+if (*stack != NULL)
 (*stack)->prev = NULL;
 free(current);
+}
 }
 }
