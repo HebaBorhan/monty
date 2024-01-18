@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * push - insert element onto the stack
@@ -21,7 +22,7 @@ free(new_node);
 exit(EXIT_FAILURE);
 }
 str = strtok(NULL, " \t\n");
-if (!str)
+if (!!isdigit(*str))
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 free(new_node);
