@@ -16,8 +16,10 @@ exit(EXIT_FAILURE);
 }
 
 (*stack)->next->n *= (*stack)->n;
-temp = *stack;
-stack = (*stack)->next;
-(*stack)->prev = NULL;
+temp = (*stack);
+(*stack) = (*stack)->next;
+if (*stack)
+{(*stack)->prev = NULL;
+}
 free(temp);
 }
