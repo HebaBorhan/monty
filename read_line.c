@@ -12,14 +12,9 @@
 
 void read_line(char *line, unsigned int line_number, stack_t **stack_head)
 {
-char *opcode;
-if (strspn(line, " \t\n") == strlen(line))
-{
-return;
-}
-opcode = strtok(line, " \t\n");
+char *opcode = strtok(line, " \t\n");
 
-if (opcode == NULL || opcode[0] == '#')
+if (opcode && opcode[0] == '#')
 {
 return;
 }
