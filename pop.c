@@ -19,7 +19,7 @@ if (current != NULL)
 while (current->prev != NULL)
 current = current->prev;
 }
-*stack = (*stack)->next;
+*stack = current->next;
 if (*stack != NULL)
 (*stack)->prev = current->prev;
 free(current);
