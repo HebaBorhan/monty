@@ -20,21 +20,17 @@ FILE *my_file;
 char line_buff[MAX_LINE_LENGTH];
 unsigned int line_number = 0, r;
 stack_t *stack_head = NULL;
-
-
 if (argc != 2)
 {
 fprintf(stderr, "USAGE: monty file\n");
 exit(EXIT_FAILURE);
 }
-
 my_file = fopen(argv[1], "r");
 if (!my_file)
 {
 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 exit(EXIT_FAILURE);
 }
-
 while (fgets(line_buff, sizeof(line_buff), my_file) != NULL)
 {
 line_number++;
