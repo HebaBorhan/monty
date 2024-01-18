@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <ctype.h>
 /**
  * read_line - Read line from Monty file
  * @line: Monty bytecode
@@ -12,9 +12,13 @@
 
 void read_line(char *line, unsigned int line_number, stack_t **stack_head)
 {
+if (strspn(line, " \t\n") == strlen(line))
+{
+return;
+}
 char *opcode = strtok(line, " \t\n");
 
-if (opcode[0] == '#')
+if (opcode == NULL || opcode[0] == '#')
 {
 return;
 }
