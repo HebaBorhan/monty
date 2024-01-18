@@ -1,7 +1,8 @@
 #include "monty.h"
 #include <stdio.h>
 /**
- * pint - Print all values on stack
+ * pint - Print the value at the top of the stack,
+ * followed by a new line.
  * @stack: Pointer to head of stack
  * @line_number: Line number in Monty file
  */
