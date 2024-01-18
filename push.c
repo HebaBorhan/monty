@@ -13,7 +13,7 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 char *str;
-int num, i;
+int num;
 stack_t *new_node;
 
 str = strtok(NULL, " \t\n");
@@ -22,14 +22,12 @@ if (str == NULL)
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-for (i = 0; str[i] != '\0'; i++)
-{
-if (!isdigit(str[i]) && !(i == 0 && str[i] == '-'))
+if (!isdigit(str) && !(str[0] == '-'))
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 exit(EXIT_FAILURE);
 }
-}
+
 num = atoi(str);
 new_node = malloc(sizeof(stack_t));
 if (!new_node)
