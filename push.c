@@ -13,9 +13,9 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 char *str;
-int num, i;
+long int num;
+int i;
 stack_t *new_node;
-
 str = strtok(NULL, " \t\n");
 if (str == NULL)
 {
@@ -42,8 +42,6 @@ new_node->n = num;
 new_node->prev = NULL;
 new_node->next = *stack;
 if (*stack)
-{
 (*stack)->prev = new_node;
-}
 *stack = new_node;
 }
