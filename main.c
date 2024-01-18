@@ -39,7 +39,6 @@ while (fgets(line_buff, sizeof(line_buff), my_file) != NULL)
 {
 line_number++;
 r = read_line(line_buff, line_number, &stack_head);
-free(line_buff);
 if (r == -1)
 line_number--;
 }
