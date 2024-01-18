@@ -8,8 +8,9 @@
  * @opcode: instruction opcode
  * @line_number: Line number in Monty file
  * @stack_head: Pointer to head of stack
+ * Return: 0 (Success)
  */
-void exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
+int exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 {
 int i;
 instruction_t inst[] = {
@@ -18,14 +19,17 @@ instruction_t inst[] = {
 {NULL, NULL}
 };
 
-for (i = 0; inst[i].opcode != NULL; i++)
+for (i = 0; inst[i].opcode && opcode; i++)
 {
 if (strcmp(inst[i].opcode, opcode) == 0)
 {
 inst[i].f(stack_head, line_number);
-return;
+return (0);
 }
 }
+if (opcode && inst[i].opcode == NULL)
+{
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
+}
 }
