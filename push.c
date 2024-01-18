@@ -17,21 +17,13 @@ long int num;
 int i;
 stack_t *new_node;
 str = strtok(NULL, " \t\n");
-if (str == NULL)
+if (str == NULL || !isdigit(*str) && *str != '-' && *str != '+')
 {
 fprintf(stderr, "L%u: usage: push integer\n", line_number);
 free_stack(*stack);
 exit(EXIT_FAILURE);
 }
-for (i = 0; str[i] != '\0'; i++)
-{
-if (!isdigit(str[i]) && !(i == 0 && str[i] == '-'))
-{
-fprintf(stderr, "L%u: usage: push integer\n", line_number);
-free_stack(*stack);
-exit(EXIT_FAILURE);
-}
-}
+
 num = (long int)(atoi(str));
 new_node = malloc(sizeof(stack_t));
 if (!new_node)
