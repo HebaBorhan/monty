@@ -15,7 +15,7 @@ exit(EXIT_FAILURE);
 }
 else
 {
-*stack = stack->next;
+*stack = (*stack)->next;
 free(current);
 }
 }
