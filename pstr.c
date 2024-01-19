@@ -13,10 +13,12 @@ stack_t *current = *stack;
 while (current)
 {
 if (current->n <= 0 || current->n > 127)
+{
+fprintf(stderr, "No string to print\n");
 break;
+}
 printf("%c", current->n);
 current = current->next;
 }
-if (current == NULL)
 printf("\n");
 }
