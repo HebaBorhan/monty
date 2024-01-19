@@ -12,12 +12,9 @@ stack_t *current = *stack;
 (void) line_number;
 while (current)
 {
-if (current->n > 0 && current->n < 128)
-{
+if (current->n <= 0 || current->n > 127)
+break;
 printf("%c", current->n);
-}
-else
-return;
 current = current->next;
 }
 if (current == NULL)
