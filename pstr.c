@@ -8,9 +8,9 @@
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
+int i;
 stack_t *current = *stack;
 (void) line_number;
-int i;
 for (i = 0; current; i++)
 {
 if (current->n > 0 && current->n < 128)
