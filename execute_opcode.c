@@ -10,20 +10,19 @@
  * @stack_head: Pointer to head of stack
  * Return: 0 (Success)
  */
-int exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
+void exec_opcode(char *opcode, unsigned int line_number, stack_t **stack_head)
 {
 int i;
 instruction_t inst[] = {{"push", push}, {"pall", pall}, {"pint", pint},
 {"pop", pop}, {"swap", swap}, {"add", add}, {"nop", nop}, {"sub", sub},
 {"div", _div}, {"mul", mul}, {"mod", mod}, {"pchar", pchar}, {"pstr", pstr},
 {NULL, NULL}};
-
 for (i = 0; inst[i].opcode && opcode; i++)
 {
 if (strcmp(inst[i].opcode, opcode) == 0)
 {
 inst[i].f(stack_head, line_number);
-return (0);
+return;
 }
 }
 if (opcode && inst[i].opcode == NULL)
@@ -31,5 +30,4 @@ if (opcode && inst[i].opcode == NULL)
 fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 exit(EXIT_FAILURE);
 }
-return (0);
 }

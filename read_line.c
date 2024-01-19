@@ -11,13 +11,12 @@
  * Return: 0 (line exist), 1 (comment or empty line)
  */
 
-int read_line(char *line, unsigned int line_number, stack_t **stack_head)
+void read_line(char *line, unsigned int line_number, stack_t **stack_head)
 {
 char *opcode = strtok(line, " \t\n");
 if (opcode == NULL)
-return (1);
+return;
 if (opcode && opcode[0] == '#')
-return (0);
+return;
 exec_opcode(opcode, line_number, stack_head);
-return (0);
 }
