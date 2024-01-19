@@ -14,7 +14,7 @@ while (current)
 {
 if (current->n <= 0 || current->n > 127)
 {
-fprintf(stderr, "No string to print\n");
+fprintf(stderr, "No string to print");
 break;
 }
 printf("%c", current->n);
