@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * swap - Swap top 2 elements of stack
+ * swap - Swap top two elements of stack
  * @stack: Pointer to head of stack
  * @line_number: Line number in Monty file
  */
