@@ -8,10 +8,9 @@
  */
 void pstr(stack_t **stack, unsigned int line_number)
 {
-int i;
 stack_t *current = *stack;
 (void) line_number;
-for (i = 0; current; i++)
+while (current)
 {
 if (current->n > 0 && current->n < 128)
 {
@@ -19,6 +18,7 @@ printf("%c", current->n);
 }
 else
 return;
+current = current->next;
 }
 if (current == NULL)
 printf("\n");
